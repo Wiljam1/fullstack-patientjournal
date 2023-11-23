@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fullstack-observations
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fullstack-observations
+  template:
+    metadata:
+      labels:
+        app: fullstack-observations
+    spec:
+      containers:
+        - name: fullstack-observations
+          image: wiljam/fullstack-observations:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql-service:3306/observations
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: wiljamniklas
