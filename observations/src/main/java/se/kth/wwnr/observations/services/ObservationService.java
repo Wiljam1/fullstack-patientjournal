@@ -30,4 +30,8 @@ public class ObservationService {
                 .orElseThrow(() -> new RuntimeException("Error getting Observation with id: " + id));
     }
 
+    public List<Observation> getByPatientId(Long patientId) {
+        return observationRepository.findByPatientId(patientId);
+    }
+
 }

@@ -9,11 +9,9 @@ public class Observation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @JsonBackReference(value = "doctor-observations")
+    
     private Long performerId;
 
-    @JsonBackReference(value = "patient-observations")
     private Long patientId;
 
     private String subject;

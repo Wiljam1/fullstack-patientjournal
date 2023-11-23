@@ -19,9 +19,9 @@ public class ObservationController {
         return observationService.getAll();
     }
 
-    @GetMapping("/observation/{id}")
-    Observation getObservation(@PathVariable Long id) {
-        return observationService.getById(id);
+    @GetMapping("/observation/{patientId}")
+    List<Observation> getObservation(@PathVariable Long patientId) {
+        return observationService.getByPatientId(patientId);
     }
 
     @PostMapping("/observation")
