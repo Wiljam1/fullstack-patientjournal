@@ -9,7 +9,7 @@ public class Observation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private Long performerId;
 
     private Long patientId;
