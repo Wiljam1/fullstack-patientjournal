@@ -34,5 +34,8 @@ public class ConditionService {
     public List<Condition> getByPatientId(Long patientId) {
         return conditionRepository.findByPatientId(patientId);
     }
+    public List<Condition> getByDoctorId(Long doctorId) {
+        return conditionRepository.findByDoctorId(doctorId);
+    }
 
 }

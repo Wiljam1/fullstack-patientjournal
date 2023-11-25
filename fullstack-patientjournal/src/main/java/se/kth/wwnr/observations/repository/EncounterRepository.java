@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface EncounterRepository extends JpaRepository<Encounter, Long> {
     List<Encounter> findByPatientId(Long patientId);
+    List<Encounter> findByPractitionerId(Long practitionerId);
 }

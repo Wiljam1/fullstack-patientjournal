@@ -27,9 +27,14 @@ public class PatientJournalController {
         return observationService.getAll();
     }
 
-    @GetMapping("/observation/{patientId}")
-    List<Observation> getObservations(@PathVariable Long patientId) {
+    @GetMapping("/observation/patient/{patientId}")
+    List<Observation> getPatientObservations(@PathVariable Long patientId) {
         return observationService.getByPatientId(patientId);
+    }
+
+    @GetMapping("/observation/staff/{performerId}")
+    List<Observation> getPerformerObservations(@PathVariable Long performerId) {
+        return observationService.getByPerformerId(performerId);
     }
 
     @PostMapping("/observation")
@@ -42,9 +47,14 @@ public class PatientJournalController {
         return encounterService.getAll();
     }
 
-    @GetMapping("/encounter/{patientId}")
-    List<Encounter> getEncounters(@PathVariable Long patientId) {
+    @GetMapping("/encounter/patient/{patientId}")
+    List<Encounter> getPatientEncounters(@PathVariable Long patientId) {
         return encounterService.getByPatientId(patientId);
+    }
+
+    @GetMapping("/encounter/staff/{practitionerId}")
+    List<Encounter> getPractitionerEncounters(@PathVariable Long practitionerId) {
+        return encounterService.getByPractitionerId(practitionerId);
     }
 
     @PostMapping("/encounter")
@@ -57,9 +67,14 @@ public class PatientJournalController {
         return conditionService.getAll();
     }
 
-    @GetMapping("/condition/{patientId}")
-    List<Condition> getConditions(@PathVariable Long patientId) {
+    @GetMapping("/condition/patient/{patientId}")
+    List<Condition> getPatientConditions(@PathVariable Long patientId) {
         return conditionService.getByPatientId(patientId);
+    }
+
+    @GetMapping("/condition/staff/{doctorId}")
+    List<Condition> getDoctorConditions(@PathVariable Long doctorId) {
+        return conditionService.getByDoctorId(doctorId);
     }
 
     @PostMapping("/condition")

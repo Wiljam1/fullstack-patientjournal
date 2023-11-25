@@ -34,4 +34,8 @@ public class ObservationService {
         return observationRepository.findByPatientId(patientId);
     }
 
+    public List<Observation> getByPerformerId(Long performerId) {
+        return observationRepository.findByPerformerId(performerId);
+    }
+
 }

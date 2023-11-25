@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ConditionRepository extends JpaRepository<Condition, Long> {
     List<Condition> findByPatientId(Long patientId);
+
+    List<Condition> findByDoctorId(Long doctorId);
 }

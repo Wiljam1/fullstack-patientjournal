@@ -35,4 +35,8 @@ public class EncounterService {
         return encounterRepository.findByPatientId(patientId);
     }
 
+    public List<Encounter> getByPractitionerId(Long practitionerId) {
+        return encounterRepository.findByPractitionerId(practitionerId);
+    }
+
 }
