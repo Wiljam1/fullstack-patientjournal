@@ -1,2 +1,2 @@
-# fullstack-observations
-Micro service that handles observations
+# fullstack-patientjournal
+Micro service that handles observations, conditions and encounters.

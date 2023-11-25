@@ -1,11 +1,11 @@
 version: '3'
 services:
-  observations:
+  patientjournal:
     build:
       context: ./
     ports:
       - "8082:8082"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/observations
+      SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/patientjournal
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: wiljamniklas
