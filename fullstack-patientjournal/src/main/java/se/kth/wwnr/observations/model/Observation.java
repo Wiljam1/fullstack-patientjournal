@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "OBSERVATIONS")
+@Table(name = "observations")
 public class Observation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

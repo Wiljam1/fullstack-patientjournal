@@ -3,7 +3,7 @@ package se.kth.wwnr.observations.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "MEDICAL_CONDITIONS")
+@Table(name = "medical_conditions")
 public class Condition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
