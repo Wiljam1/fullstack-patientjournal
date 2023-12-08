@@ -15,6 +15,7 @@ public class Encounter {
 
     private Long patientId;
 
+    @Temporal(TemporalType.DATE)
     private Date date;
     private String location;
 
