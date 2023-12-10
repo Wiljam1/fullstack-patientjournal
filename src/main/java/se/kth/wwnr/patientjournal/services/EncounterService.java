@@ -1,16 +1,10 @@
-package se.kth.wwnr.observations.services;
+package se.kth.wwnr.patientjournal.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.kth.wwnr.observations.model.Encounter;
-import se.kth.wwnr.observations.model.Observation;
-import se.kth.wwnr.observations.repository.EncounterRepository;
+import se.kth.wwnr.patientjournal.model.Encounter;
+import se.kth.wwnr.patientjournal.repository.EncounterRepository;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @Service

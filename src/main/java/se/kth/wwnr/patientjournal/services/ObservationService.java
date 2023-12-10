@@ -1,8 +1,8 @@
-package se.kth.wwnr.observations.services;
+package se.kth.wwnr.patientjournal.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.kth.wwnr.observations.model.Observation;
-import se.kth.wwnr.observations.repository.ObservationRepository;
+import se.kth.wwnr.patientjournal.model.Observation;
+import se.kth.wwnr.patientjournal.repository.ObservationRepository;
 
 
 import java.util.List;

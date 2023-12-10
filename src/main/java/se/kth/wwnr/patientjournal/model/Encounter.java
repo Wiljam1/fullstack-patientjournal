@@ -1,4 +1,4 @@
-package se.kth.wwnr.observations.model;
+package se.kth.wwnr.patientjournal.model;
 
 import jakarta.persistence.*;
 

@@ -1,6 +1,5 @@
-package se.kth.wwnr.observations.model;
+package se.kth.wwnr.patientjournal.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity

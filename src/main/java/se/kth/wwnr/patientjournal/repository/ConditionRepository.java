@@ -1,7 +1,7 @@
-package se.kth.wwnr.observations.repository;
+package se.kth.wwnr.patientjournal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import se.kth.wwnr.observations.model.Condition;
+import se.kth.wwnr.patientjournal.model.Condition;
 
 import java.util.List;
 

@@ -1,13 +1,13 @@
-package se.kth.wwnr.observations.controller;
+package se.kth.wwnr.patientjournal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import se.kth.wwnr.observations.model.Condition;
-import se.kth.wwnr.observations.model.Encounter;
-import se.kth.wwnr.observations.model.Observation;
-import se.kth.wwnr.observations.services.ConditionService;
-import se.kth.wwnr.observations.services.EncounterService;
-import se.kth.wwnr.observations.services.ObservationService;
+import se.kth.wwnr.patientjournal.model.Condition;
+import se.kth.wwnr.patientjournal.model.Encounter;
+import se.kth.wwnr.patientjournal.model.Observation;
+import se.kth.wwnr.patientjournal.services.ConditionService;
+import se.kth.wwnr.patientjournal.services.EncounterService;
+import se.kth.wwnr.patientjournal.services.ObservationService;
 
 import java.util.List;
 
