@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>se.kth.wwnr</groupId>
-    <artifactId>fullstack-observations</artifactId>
+    <artifactId>fullstack-patientjournal</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>observations</name>
     <description>observations</description>
