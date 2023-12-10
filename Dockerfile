@@ -1,27 +1,10 @@
-# Use OpenJDK 21 as the base image
+FROM maven:3.8.4-openjdk-17-slim AS build
+COPY src /app/src
+COPY pom.xml /app
+RUN mvn -f /app/pom.xml install
+
 FROM openjdk:21
-
-# Set the working directory inside the container
 WORKDIR /app
-
-# Copy Maven wrapper files and the project POM
-COPY .mvn .mvn
-COPY mvnw pom.xml ./
-
-# Clean up the Maven wrapper file
-RUN sed -i 's/\r$//' mvnw
-
-# Check the existence of the .mvn directory
-RUN ls -la .mvn
-
-# Resolve dependencies and package the application into a JAR file
-RUN ./mvnw clean package
-
-# Check the existence of the target directory
-RUN ls -la target
-
-# Copy the application source code
-COPY src ./src
-
-# Command to run when the container starts
-CMD ["java", "-jar", "target/fullstack-patientjournal.jar"]
+COPY --from=build /app/target/fullstack-patientjournal.jar /app/fullstack-patientjournal-1.0.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "/app/target/fullstack-patientjournal.jar"]
