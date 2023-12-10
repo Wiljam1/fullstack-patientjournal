@@ -5,14 +5,20 @@ FROM openjdk:21
 WORKDIR /app
 
 # Copy Maven wrapper files and the project POM
-COPY .mvn/ .mvn
+COPY .mvn .mvn
 COPY mvnw pom.xml ./
 
 # Clean up the Maven wrapper file
 RUN sed -i 's/\r$//' mvnw
 
+# Check the existence of the .mvn directory
+RUN ls -la .mvn
+
 # Resolve dependencies and package the application into a JAR file
 RUN ./mvnw clean package
+
+# Check the existence of the target directory
+RUN ls -la target
 
 # Copy the application source code
 COPY src ./src
