@@ -5,6 +5,6 @@ RUN mvn -f /app/pom.xml install
 
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/fullstack-patientjournal.jar /app/fullstack-patientjournal-1.0.jar
+COPY --from=build /app/target/fullstack-patientjournal-0.0.1-SNAPSHOT.jar /app/fullstack-patientjournal-1.0.jar
 EXPOSE 8082
 ENTRYPOINT ["java", "-jar", "/app/target/fullstack-patientjournal.jar"]
