@@ -12,7 +12,7 @@ import se.kth.wwnr.patientjournal.services.ObservationService;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin
 public class PatientJournalController {
 
     @Autowired
