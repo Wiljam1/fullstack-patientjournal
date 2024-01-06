@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import se.kth.wwnr.patientjournal.model.Condition;
 import se.kth.wwnr.patientjournal.model.Encounter;
 import se.kth.wwnr.patientjournal.model.Observation;
@@ -32,6 +33,7 @@ class PatientJournalControllerTest {
     private PatientJournalController patientJournalController;
 
     @Test
+    @WithMockUser
     void getAllObservations() {
         List<Observation> observations = Arrays.asList(new Observation(), new Observation());
         when(observationService.getAll()).thenReturn(observations);
@@ -43,6 +45,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getPatientObservations() {
         Long patientId = 1L;
         List<Observation> patientObservations = Arrays.asList(new Observation(), new Observation());
@@ -55,6 +58,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getPerformerObservations() {
         Long performerId = 1L;
         List<Observation> performerObservations = Arrays.asList(new Observation(), new Observation());
@@ -67,6 +71,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void createObservation() {
         Observation inputObservation = new Observation();
         when(observationService.create(any(Observation.class))).thenReturn(inputObservation);
@@ -78,6 +83,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getAllEncounters() {
         List<Encounter> encounters = Arrays.asList(new Encounter(), new Encounter());
         when(encounterService.getAll()).thenReturn(encounters);
@@ -89,6 +95,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getPatientEncounters() {
         Long patientId = 1L;
         List<Encounter> patientEncounters = Arrays.asList(new Encounter(), new Encounter());
@@ -101,6 +108,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getPractitionerEncounters() {
         Long practitionerId = 1L;
         List<Encounter> practitionerEncounters = Arrays.asList(new Encounter(), new Encounter());
@@ -113,6 +121,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void createEncounter() {
         Encounter inputEncounter = new Encounter();
         when(encounterService.create(any(Encounter.class))).thenReturn(inputEncounter);
@@ -124,6 +133,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getAllConditions() {
         List<Condition> conditions = Arrays.asList(new Condition(), new Condition());
         when(conditionService.getAll()).thenReturn(conditions);
@@ -135,6 +145,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getPatientConditions() {
         Long patientId = 1L;
         List<Condition> patientConditions = Arrays.asList(new Condition(), new Condition());
@@ -147,6 +158,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void getDoctorConditions() {
         Long doctorId = 1L;
         List<Condition> doctorConditions = Arrays.asList(new Condition(), new Condition());
@@ -159,6 +171,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
+    @WithMockUser
     void createCondition() {
         Condition inputCondition = new Condition();
         when(conditionService.create(any(Condition.class))).thenReturn(inputCondition);

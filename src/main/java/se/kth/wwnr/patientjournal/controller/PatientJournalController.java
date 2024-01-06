@@ -1,7 +1,9 @@
 package se.kth.wwnr.patientjournal.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.*;
+import se.kth.wwnr.patientjournal.keycloak.SecurityUtils;
 import se.kth.wwnr.patientjournal.model.Condition;
 import se.kth.wwnr.patientjournal.model.Encounter;
 import se.kth.wwnr.patientjournal.model.Observation;
@@ -24,11 +26,15 @@ public class PatientJournalController {
 
     @GetMapping("/observations")
     List<Observation> getAllObservations() {
-        return observationService.getAll();
+        if (SecurityUtils.hasRole("doctor")) {
+            return observationService.getAll();
+        } else {
+            throw new AccessDeniedException("Not authorized: Requires doctor role");
+        }
     }
 
     @GetMapping("/observation/patient/{patientId}")
-    List<Observation> getPatientObservations(@PathVariable Long patientId) {
+    public List<Observation> getPatientObservations(@PathVariable Long patientId) {
         return observationService.getByPatientId(patientId);
     }
 
@@ -39,7 +45,11 @@ public class PatientJournalController {
 
     @PostMapping("/observation")
     Observation createObservation(@RequestBody Observation observation) {
-        return observationService.create(observation);
+        if (SecurityUtils.hasRole("doctor")) {
+            return observationService.create(observation);
+        } else {
+            throw new AccessDeniedException("Not authorized: Requires doctor role");
+        }
     }
 
     @GetMapping("/encounters")
@@ -59,7 +69,11 @@ public class PatientJournalController {
 
     @PostMapping("/encounter")
     Encounter createEncounter(@RequestBody Encounter encounter) {
-        return encounterService.create(encounter);
+        if (SecurityUtils.hasRole("doctor")) {
+            return encounterService.create(encounter);
+        } else {
+            throw new AccessDeniedException("Not authorized: Requires doctor role");
+        }
     }
 
     @GetMapping("/conditions")
@@ -79,6 +93,10 @@ public class PatientJournalController {
 
     @PostMapping("/condition")
     Condition createCondition(@RequestBody Condition condition) {
-        return conditionService.create(condition);
+        if (SecurityUtils.hasRole("doctor")) {
+            return conditionService.create(condition);
+        } else {
+            throw new AccessDeniedException("Not authorized: Requires doctor role");
+        }
     }
 }
