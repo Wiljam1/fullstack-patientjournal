@@ -1,10 +1,17 @@
 package se.kth.wwnr.patientjournal.controller;
 
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
+import se.kth.wwnr.patientjournal.keycloak.SecurityUtils;
 import se.kth.wwnr.patientjournal.model.Condition;
 import se.kth.wwnr.patientjournal.model.Encounter;
 import se.kth.wwnr.patientjournal.model.Observation;
@@ -32,8 +39,21 @@ class PatientJournalControllerTest {
     @Autowired
     private PatientJournalController patientJournalController;
 
+    private MockedStatic<SecurityUtils> mockedSecurityUtils;
+
+    @BeforeEach
+    public void setup() {
+        mockedSecurityUtils = Mockito.mockStatic(SecurityUtils.class);
+        when(SecurityUtils.hasRole("doctor")).thenReturn(true);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        mockedSecurityUtils.close();
+    }
+
     @Test
-    @WithMockUser
+    @WithMockUser(roles = "doctor")
     void getAllObservations() {
         List<Observation> observations = Arrays.asList(new Observation(), new Observation());
         when(observationService.getAll()).thenReturn(observations);
@@ -71,7 +91,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(roles = "doctor")
     void createObservation() {
         Observation inputObservation = new Observation();
         when(observationService.create(any(Observation.class))).thenReturn(inputObservation);
@@ -121,7 +141,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(roles = "doctor")
     void createEncounter() {
         Encounter inputEncounter = new Encounter();
         when(encounterService.create(any(Encounter.class))).thenReturn(inputEncounter);
@@ -171,7 +191,7 @@ class PatientJournalControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockUser(roles = "doctor")
     void createCondition() {
         Condition inputCondition = new Condition();
         when(conditionService.create(any(Condition.class))).thenReturn(inputCondition);
